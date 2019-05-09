@@ -3,12 +3,20 @@ package com.example.fabricaProgramador.ws.service;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.example.fabricaProgramador.model.Cliente;
+import com.example.fabricaProgramador.ws.repository.ClienteRepository;
 
 @Service
 public class ClienteService {
 
+	@Autowired
+	ClienteRepository  clienteRepository;
+		
 	private Map<Integer, Cliente> clientes = new HashMap<Integer, Cliente>();
 
 	Integer proximoId = 6;
@@ -38,18 +46,25 @@ public class ClienteService {
 	}
 	
 	public void excluir(Cliente cliente) {
-		clientes.remove(cliente.getId());
+		
+		clienteRepository.delete(cliente);
+		
+		// clientes.remove(cliente.getId());
 	}
 
 	public Cliente alterar(Cliente cliente) {
-		return clientes.put(cliente.getId(), cliente);
+		
+		return clienteRepository.save(cliente);
+	 //	return clientes.put(cliente.getId(), cliente);
 	}
 
-	public Cliente buscarPorId(Integer idCliente) {
-		return clientes.get(idCliente);
+	public Optional<Cliente> buscarPorId(Integer idCliente) {
+		return clienteRepository.findById(idCliente) ;
 	}
 
-
+    public Collection <Cliente> buscarTodos() {
+    	return clienteRepository.findAll();
+    }
 	
 	
 }
