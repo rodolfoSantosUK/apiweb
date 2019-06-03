@@ -46,14 +46,11 @@ public class ClienteService {
 	}
 	
 	public void excluir(Cliente cliente) {
-		
 		clienteRepository.delete(cliente);
-		
 		// clientes.remove(cliente.getId());
 	}
 
 	public Cliente alterar(Cliente cliente) {
-		
 		return clienteRepository.save(cliente);
 	 //	return clientes.put(cliente.getId(), cliente);
 	}

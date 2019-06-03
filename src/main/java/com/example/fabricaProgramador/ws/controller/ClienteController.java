@@ -23,7 +23,8 @@ public class ClienteController {
 	@Autowired
 	ClienteService clienteService;
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/clientes", produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.GET, value = "/clientes", 
+			      produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Collection<Cliente>> buscarTodosClientes() {
 		Collection<Cliente> clientesBuscados = clienteService.criarClientes();
 		return new ResponseEntity<>(clientesBuscados, HttpStatus.OK);

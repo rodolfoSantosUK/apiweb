@@ -7,8 +7,8 @@ import javax.persistence.Id;
 @Entity
 public class Cliente {
 
-	 @Id
-	 @GeneratedValue
+	@Id
+	@GeneratedValue
 	private Integer id;
 	
 	private String nome;
