@@ -41,11 +41,12 @@ public class ClienteController {
 	@RequestMapping(method = RequestMethod.DELETE, value = "/clientes/{idCliente}")
 	public ResponseEntity<Cliente> excluirCliente(@PathVariable Integer idCliente) {
 
-		Cliente clienteEncontrado = clienteService.buscarPorId(idCliente).get();
-		if (clienteEncontrado == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		clienteService.excluir(clienteEncontrado);
+//		Cliente clienteEncontrado = clienteService.buscarPorId(idCliente).get();
+//		
+//		if (clienteEncontrado == null) {
+//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//		}
+//		clienteService.excluir(clienteEncontrado);
 		return new ResponseEntity<Cliente>(HttpStatus.OK);
 	}
 

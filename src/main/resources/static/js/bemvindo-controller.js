@@ -1,0 +1,1 @@
+appCliente.controller("bemvindoController", function(){});

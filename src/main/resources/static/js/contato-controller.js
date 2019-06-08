@@ -1,0 +1,1 @@
+appCliente.controller("contatoController", function(){});
