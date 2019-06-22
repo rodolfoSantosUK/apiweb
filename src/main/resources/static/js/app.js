@@ -6,7 +6,7 @@ appCliente.controller("indexController", function($scope, $http) {
 	$scope.clientes = [];
 	$scope.cliente = {};
 
-	$scope.carregarClientes = function() {
+    carregarClientes = function() {
 		$http({
 			method : 'GET',url : 'http://localhost:4141/clientes'
 		}).then(function(response) {
@@ -17,14 +17,23 @@ appCliente.controller("indexController", function($scope, $http) {
 		});
 	}
 
-	$scope.carregarClientes();
+	$scope.cancelarAlteracaoCliente = function() {
+		$scope.cliente = {};
+	};
+	
+	carregarClientes();
 
 	$scope.salvarCliente = function() {
 		$http({
 			method : 'POST', url : 'http://localhost:4141/cliente',
 			data : $scope.cliente
 		}).then(function(response) {
-			$scope.clientes.push(response.data);
+			
+			// $scope.clientes.push(response.data);
+			carregarClientes();
+			$scope.cancelarAlteracaoCliente();
+			
+			
 			console.log(response.data);
 		}, function(response) {
 			console.log(response.data);
@@ -44,7 +53,10 @@ appCliente.controller("indexController", function($scope, $http) {
 			console.log(response.data);
 		});
 	}
-
+	
+	$scope.alterarCliente = function (cli) {
+		$scope.cliente =  angular.copy(cli);
+	}
 	
 	
 	
